@@ -1,4 +1,4 @@
-﻿namespace Back
+﻿namespace Logica
 {
     public class Class1
     {
