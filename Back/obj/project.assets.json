@@ -8,23 +8,23 @@
     "net9.0": []
   },
   "packageFolders": {
-    "C:\\Users\\facu_\\.nuget\\packages\\": {},
+    "C:\\Users\\Usuario\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\facu_\\OneDrive\\Documents\\GitHub\\Totaltech\\Back\\Entidades.csproj",
+      "projectUniqueName": "C:\\Users\\Usuario\\OneDrive\\Documents\\GitHub\\Totaltech\\Back\\Entidades.csproj",
       "projectName": "Entidades",
-      "projectPath": "C:\\Users\\facu_\\OneDrive\\Documents\\GitHub\\Totaltech\\Back\\Entidades.csproj",
-      "packagesPath": "C:\\Users\\facu_\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\facu_\\OneDrive\\Documents\\GitHub\\Totaltech\\Back\\obj\\",
+      "projectPath": "C:\\Users\\Usuario\\OneDrive\\Documents\\GitHub\\Totaltech\\Back\\Entidades.csproj",
+      "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Usuario\\OneDrive\\Documents\\GitHub\\Totaltech\\Back\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\facu_\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
