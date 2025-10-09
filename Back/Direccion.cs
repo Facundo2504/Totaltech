@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    class Dirección
+    public class Direccion
     {
+
+
+
+
     }
 }

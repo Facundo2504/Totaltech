@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Repository\" />
+    <ProjectReference Include="..\Back\Entidades.csproj" />
   </ItemGroup>
 
 </Project>

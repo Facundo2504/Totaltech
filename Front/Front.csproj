@@ -8,4 +8,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Back\Entidades.csproj" />
+    <ProjectReference Include="..\Logica\Logica.csproj" />
+  </ItemGroup>
+
 </Project>
