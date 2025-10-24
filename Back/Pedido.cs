@@ -1,4 +1,6 @@
 using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Entidades
 {
@@ -10,41 +12,50 @@ namespace Entidades
         /// <summary>
         /// Identificador único del pedido.
         /// </summary>
+        [Key]
         public int IdPedido { get; set; }
 
         /// <summary>
         /// Identificador del usuario que realizó el pedido.
         /// </summary>
+        [Required]
         public int IdUsuario { get; set; }
 
         /// <summary>
         /// Fecha y hora en que se generó el pedido.
         /// </summary>
+        [DataType(DataType.DateTime)]
         public DateTime FechaPedido { get; set; }
 
         /// <summary>
         /// Estado actual del ciclo de vida del pedido.
         /// </summary>
+        [Required]
         public EstadoPedido Estado { get; set; } = EstadoPedido.Pendiente;
 
         /// <summary>
         /// Método de pago utilizado para abonar el pedido.
         /// </summary>
+        [Required]
+        [MaxLength(100)]
         public string MetodoPago { get; set; } = string.Empty;
 
         /// <summary>
         /// Identificador de la dirección de entrega o facturación asociada.
         /// </summary>
+        [Required]
         public int IdDireccion { get; set; }
 
         /// <summary>
         /// Referencia al usuario dueño del pedido.
         /// </summary>
+        [ForeignKey(nameof(IdUsuario))]
         public Usuario? Usuario { get; set; }
 
         /// <summary>
         /// Dirección vinculada al pedido.
         /// </summary>
+        [ForeignKey(nameof(IdDireccion))]
         public Direccion? Direccion { get; set; }
 
         /// <summary>
