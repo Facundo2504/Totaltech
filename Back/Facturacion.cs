@@ -20,8 +20,8 @@ namespace Entidades
         public DateTime FechaEmision { get; set; }
 
    
-         // maximo 50 caracteres
-        public string NroFactura { get; set; } = string.Empty;
+        [Required]// propiedad no puede ser nula ni vacía
+        public string NroFactura { get; set; } // numero de factura
 
  
         public decimal Total { get; set; }
