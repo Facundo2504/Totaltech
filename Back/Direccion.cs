@@ -17,24 +17,15 @@ namespace Entidades
   
         [Key]
         public int IdDireccion { get; set; }
-
-
+        public int? IdUsuario { get; set; }
         [ForeignKey(nameof(IdUsuario))]
         public Usuario? Usuario { get; set; }
-
         public string Calle { get; set; } = string.Empty;
-
-
         public string Numero { get; set; } = string.Empty;
-
         public string Ciudad { get; set; } = string.Empty;
-
         public string Provincia { get; set; } = string.Empty;
-
         public string CodigoPostal { get; set; } = string.Empty;
-
         public string Pais { get; set; } = string.Empty;
-
         public TipoDireccion Tipo { get; set; } = TipoDireccion.Envio;
 
 
@@ -43,9 +34,7 @@ namespace Entidades
 
     public enum TipoDireccion
     {
-        /// <summary>
-        /// Dirección destinada a la entrega de productos.
-        /// </summary>
+
         Envio = 0,
 
         Facturacion = 1,
