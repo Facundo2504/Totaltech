@@ -5,34 +5,52 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Entidades
 {
-
+    /// <summary>
     /// Representa un producto del catálogo.
     /// Modelo simple y directo para usar con EF Core.
- 
+    /// </summary>
     public class Producto
     {
         // === Identidad ===
         [Key]
-        public int IdProducto { get; set; }   // Clave primaria
+        public int IdProducto { get; set; }
+
+        // === Datos Básicos ===
+        [Required]
         public string Nombre { get; set; } = string.Empty;
+
         public string Descripcion { get; set; } = string.Empty;
+
+        [Range(0, double.MaxValue)]
         public decimal Precio { get; set; }
+
+        [Range(0, int.MaxValue)]
         public int Stock { get; set; }
-        public bool Activo { get; set; } = true;  
-        public string ImagenUrl { get; set; } = string.Empty;  
+
+        public bool Activo { get; set; } = true;
+        public string ImagenUrl { get; set; } = string.Empty;
+
         public string Marca { get; set; } = string.Empty;
+
+        // === Metadata ===
+        [DataType(DataType.DateTime)]
         public DateTime FechaCreacion { get; set; } = DateTime.UtcNow;
+
+        [DataType(DataType.DateTime)]
         public DateTime? FechaActualizacion { get; set; }
-        public int IdCategoria { get; set; }     // FK a Categoría
-        [ForeignKey(nameof(IdCategoria))]// indicamos la relacion con categoria 
-        public Categoria? Categoria { get; set; } // Navegación a Categoría
-        public int IdProveedor { get; set; }     // FK a Proveedor
+
+        // === Relaciones ===
+        public int IdCategoria { get; set; }
+
+        [ForeignKey(nameof(IdCategoria))]
+        public Categoria? Categoria { get; set; }
+        public int IdProveedor { get; set; }
         [ForeignKey(nameof(IdProveedor))]
-        public Proveedor? Proveedor { get; set; } // Navegación a Proveedor
-        public ICollection<Resenia> Resenias { get; set; } = new List<Resenia>(); // Opiniones de clientes
-
-
-        public ICollection<Promocion> Promociones { get; set; } = new List<Promocion>(); // Descuentos asociados
+        public Proveedor? Proveedor { get; set; }
+        
+        public ICollection<Resenia> Resenias { get; set; } = new List<Resenia>();
+       
+        public ICollection<Promocion> Promociones { get; set; } = new List<Promocion>();
         public void ActualizarDatos(string nombre, decimal precio, int stock, string? descripcion = null, string? marca = null, string? imagenUrl = null, bool? activo = null)
         {
             if (string.IsNullOrWhiteSpace(nombre))
