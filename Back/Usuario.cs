@@ -13,11 +13,11 @@ namespace Entidades
         /// Identificador único del usuario dentro de la base de datos.
         [Key]
         public int IdUsuario { get; set; }
-        public string Nombre { get; set; } = string.Empty;
-        public string Apellido { get; set; } = string.Empty;
-        public string Email { get; set; } = string.Empty;
-        public string Contrasena { get; set; } = string.Empty;
-        public string Telefono { get; set; } = string.Empty;
+        public string Nombre { get; set; } 
+        public string Apellido { get; set; }
+        public string Email { get; set; } 
+        public string Contrasena { get; set; }
+        public string Telefono { get; set; } 
 
         [DataType(DataType.DateTime)]
         public DateTime FechaRegistro { get; set; }

@@ -20,12 +20,12 @@ namespace Entidades
         public int? IdUsuario { get; set; }
         [ForeignKey(nameof(IdUsuario))]
         public Usuario? Usuario { get; set; }
-        public string Calle { get; set; } = string.Empty;
-        public string Numero { get; set; } = string.Empty;
-        public string Ciudad { get; set; } = string.Empty;
-        public string Provincia { get; set; } = string.Empty;
-        public string CodigoPostal { get; set; } = string.Empty;
-        public string Pais { get; set; } = string.Empty;
+        public string Calle { get; set; } 
+        public string Numero { get; set; } 
+        public string Ciudad { get; set; } 
+        public string Provincia { get; set; } 
+        public string CodigoPostal { get; set; } 
+        public string Pais { get; set; } 
         public TipoDireccion Tipo { get; set; } = TipoDireccion.Envio;
 
 
