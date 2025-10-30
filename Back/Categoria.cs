@@ -15,25 +15,21 @@ namespace Entidades
         [Key]
         public int IdProducto { get; set; }   // Clave primaria
 
-        // === Datos básicos ===
-        [Required]                 // Obligatorio
-        [MaxLength(150)]           // Límite de longitud para índices y UI
+    
         public string Nombre { get; set; } = string.Empty;
 
-        [MaxLength(1000)]
-        public string Descripcion { get; set; } = string.Empty;
+      
+        public string Descripcion { get; set; } 
 
-        [Range(0, double.MaxValue)]  // No se permiten precios negativos
+       
         public decimal Precio { get; set; }
 
-        [Range(0, int.MaxValue)]     // No se permite stock negativo
+          
         public int Stock { get; set; }
 
         public bool Activo { get; set; } = true;  // Para ocultar o despublicar el producto
 
-        [Url]
-        [MaxLength(500)]
-        public string ImagenUrl { get; set; } = string.Empty;  // URL de imagen principal
+       
 
         // === Metadata mínima ===
         [DataType(DataType.DateTime)]
