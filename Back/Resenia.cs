@@ -25,7 +25,7 @@ namespace Entidades
         [Range(1, 5)]
         public int Calificacion { get; set; }
 
-        [MaxLength(1000)]
+        [MaxLength(500)]// longitud máxima de 500 caracteres
         public string Comentario { get; set; } = string.Empty;
 
         [DataType(DataType.DateTime)]

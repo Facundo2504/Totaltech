@@ -20,14 +20,11 @@ namespace Entidades
         public DateTime FechaEmision { get; set; }
 
    
-        [Required]
-        [MaxLength(50)] // maximo 50 caracteres
+         // maximo 50 caracteres
         public string NroFactura { get; set; } = string.Empty;
 
  
-        [Range(0, double.MaxValue)]/// valor minimo 0, maximo el valor mas grande posible
         public decimal Total { get; set; }
-
  
         [ForeignKey(nameof(IdPrefactura))]// relacion con Prefacturacion
         public Prefacturacion? Prefacturacion { get; set; }

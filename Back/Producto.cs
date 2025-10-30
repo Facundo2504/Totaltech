@@ -5,13 +5,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Entidades
 {
-    /// <summary>
     /// Representa un producto del catálogo.
     /// Modelo simple y directo para usar con EF Core.
-    /// </summary>
     public class Producto
     {
-        // === Identidad ===
         [Key]
         public int IdProducto { get; set; }
 
@@ -21,14 +18,14 @@ namespace Entidades
 
         public string Descripcion { get; set; } = string.Empty;
 
-        [Range(0, double.MaxValue)]
+        [Range(0, double.MaxValue)]/// valor minimo 0, maximo el valor mas grande posible
         public decimal Precio { get; set; }
 
         [Range(0, int.MaxValue)]
         public int Stock { get; set; }
 
         public bool Activo { get; set; } = true;
-        public string ImagenUrl { get; set; } = string.Empty;
+        public string ImagenUrl { get; set; } = string.Empty;// ruta de la imagen
 
         public string Marca { get; set; } = string.Empty;
 

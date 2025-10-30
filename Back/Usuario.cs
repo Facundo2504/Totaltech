@@ -6,14 +6,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Entidades
 {
-    /// <summary>
     /// Representa a un usuario del sistema con sus datos personales y relaciones de negocio.
-    /// </summary>
+
     public class Usuario
     {
-        /// <summary>
         /// Identificador único del usuario dentro de la base de datos.
-        /// </summary>
         [Key]
         public int IdUsuario { get; set; }
         public string Nombre { get; set; } = string.Empty;
@@ -25,9 +22,8 @@ namespace Entidades
         [DataType(DataType.DateTime)]
         public DateTime FechaRegistro { get; set; }
 
-        /// <summary>
+  
         /// Rol asignado al usuario para determinar permisos y accesos.
-        /// </summary>
    
         public RolUsuario Rol { get; set; } = RolUsuario.Cliente;
 
@@ -37,7 +33,7 @@ namespace Entidades
         public ICollection<Pedido> Pedidos { get; set; } = new List<Pedido>();
 
     
-        public ICollection<Resenia> Resenias { get; set; } = new List<Resenia>();
+        public ICollection<Resenia> Resenias { get; set; } = new List<Resenia>();// reseñas realizadas por el usuario
     }
 
     public enum RolUsuario

@@ -9,9 +9,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Entidades
 {
-    /// <summary>
     /// Representa una promoción o descuento aplicable a productos o categorías.
-    /// </summary>
     public class Promocion
     {
 
@@ -23,24 +21,22 @@ namespace Entidades
         public int? IdProducto { get; set; }
 
         [Required]
-        [MaxLength(50)]
         public string Codigo { get; set; } = string.Empty;
 
-        [MaxLength(500)]
         public string Descripcion { get; set; } = string.Empty;
 
         [Range(0, 100)]
         public decimal PorcentajeDescuento { get; set; }
 
-        [DataType(DataType.DateTime)]
+        [DataType(DataType.DateTime)]// que devuelva fecha y hora
         public DateTime FechaInicio { get; set; }
 
-        [DataType(DataType.DateTime)]
+        [DataType(DataType.DateTime)]// que devuelva fecha y hora
         public DateTime FechaFin { get; set; }
 
         public bool Activo { get; set; } = true;
 
-        [ForeignKey(nameof(IdCategoria))]
+        [ForeignKey(nameof(IdCategoria))]// relacion con Categoria
         public Categoria? Categoria { get; set; }
 
         [ForeignKey(nameof(IdProducto))]// relacion con Producto

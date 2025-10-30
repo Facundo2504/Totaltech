@@ -11,7 +11,7 @@ namespace Entidades
         [Key]
         public int IdPrefactura { get; set; }
 
-        [Required]
+        [Required]/// propiedad no puede ser nula ni vacía
         public int IdPedido { get; set; }
 
         [DataType(DataType.DateTime)]
