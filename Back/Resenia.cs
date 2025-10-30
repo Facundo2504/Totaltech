@@ -61,3 +61,6 @@ namespace Entidades
         /// </summary>
         [ForeignKey(nameof(IdProducto))]
         public Producto? Producto { get; set; }
+    }
+
+}

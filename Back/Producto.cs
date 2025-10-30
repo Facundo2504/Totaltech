@@ -13,25 +13,35 @@ namespace Entidades
     {
         // === Identidad ===
         [Key]
-        public int IdProducto { get; set; }   // Clave primari
+        public int IdProducto { get; set; }   // Clave primaria
+
         public string Nombre { get; set; } = string.Empty;
-        public string Descripcion { get; set; } 
+        public string Descripcion { get; set; } = string.Empty;
         public decimal Precio { get; set; }
         public int Stock { get; set; }
-               /// [ForeignKey(nameof(IdCategoria))]
-        public Categoria? Categoria { get; set; } 
-        public bool Activo { get; set; } = true;  // Para ocultar o despublicar el producto
-        public string ImagenUrl { get; set; } = string.Empty;  // URL de imagen principal
-        public DateTime FechaCreacion { get; set; } = DateTime.UtcNow;
-        public DateTime? FechaActualizacion { get; set; }
-        
-       /// [ForeignKey(nameof(IdCategoria))]
-        public Categoria? Categoria { get; set; } 
+
+        public bool Activo { get; set; } = true;  
+        public string ImagenUrl { get; set; } = string.Empty;  
+        public string Marca { get; set; } = string.Empty; 
+      //  public DateTime FechaCreacion { get; set; } = DateTime.UtcNow; opcional preguntar profe
+       /// public DateTime? FechaActualizacion { get; set; }
+      // FK a Categoría
+
+        [ForeignKey(nameof(IdCategoria))]
+        public Categoria? Categoria { get; set; } // Navegación a Categoría
+     // FK a Proveedor
+
+        [ForeignKey(nameof(IdProveedor))]
+        public Proveedor? Proveedor { get; set; } // Navegación a Proveedor
+
+        [InverseProperty(nameof(Resenia.Producto))]
+        public ICollection<Resenia> Resenias { get; set; } = new List<Resenia>(); // Opiniones de clientes
+
+        [InverseProperty(nameof(Promocion.Producto))]
+        public ICollection<Promocion> Promociones { get; set; } = new List<Promocion>(); // Descuentos asociados
 
 
-       
-
-        public void ActualizarDatos(string nombre, decimal precio, int stock, string? descripcion = null, string? imagenUrl = null, bool? activo = null)
+        public void ActualizarDatos(string nombre, decimal precio, int stock, string? descripcion = null, string? marca = null, string? imagenUrl = null, bool? activo = null)
         {
             if (string.IsNullOrWhiteSpace(nombre))
                 throw new ArgumentException("El nombre es obligatorio.", nameof(nombre));
@@ -52,14 +62,16 @@ namespace Entidades
             if (imagenUrl != null)
                 ImagenUrl = imagenUrl.Trim();
 
+            if (marca != null)
+                Marca = marca.Trim();
+
             if (activo.HasValue)
                 Activo = activo.Value;
 
             FechaActualizacion = DateTime.UtcNow;
         }
 
-      
-        
+
         public void AjustarStock(int cantidad)
         {
             var nuevo = Stock + cantidad;
