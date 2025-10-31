@@ -41,6 +41,10 @@ namespace Entidades
 
         [ForeignKey(nameof(IdProducto))]// relacion con Producto
         public Producto? Producto { get; set; }
+
+        public ICollection<Producto> Productos { get; set; } = new List<Producto> ();
     }
+       
+
 
 }

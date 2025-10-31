@@ -19,7 +19,7 @@ namespace Entidades
         public string Contrasena { get; set; }
         public string Telefono { get; set; } 
 
-        [DataType(DataType.DateTime)]
+        [DataType(DataType.DateTime)]// // que devuelva fecha y ahora
         public DateTime FechaRegistro { get; set; }
 
   
