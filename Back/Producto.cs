@@ -29,14 +29,13 @@ namespace Entidades
 
         public string Marca { get; set; } = string.Empty;
 
-        // === Metadata ===
-        [DataType(DataType.DateTime)]
+      
         public DateTime FechaCreacion { get; set; } = DateTime.UtcNow;
 
         [DataType(DataType.DateTime)]
         public DateTime? FechaActualizacion { get; set; }
 
-        // === Relaciones ===
+        
         public int IdCategoria { get; set; }
 
         [ForeignKey(nameof(IdCategoria))]
@@ -48,6 +47,7 @@ namespace Entidades
         public ICollection<Resenia> Resenias { get; set; } = new List<Resenia>();
        
         public ICollection<Promocion> Promociones { get; set; } = new List<Promocion>();
+        
         public void ActualizarDatos(string nombre, decimal precio, int stock, string? descripcion = null, string? marca = null, string? imagenUrl = null, bool? activo = null)
         {
             if (string.IsNullOrWhiteSpace(nombre))

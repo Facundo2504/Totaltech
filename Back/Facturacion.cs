@@ -26,7 +26,7 @@ namespace Entidades
  
         public decimal Total { get; set; }
  
-        [ForeignKey(nameof(IdPrefactura))]// relacion con Prefacturacion
+        
         public Prefacturacion? Prefacturacion { get; set; }
     }
 }
