@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "c1Kbj5RRdhs=",
+  "dgSpecHash": "npfieA8oVic=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Usuario\\OneDrive\\Documents\\GitHub\\Totaltech\\Back\\Entidades.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\facu_\\Documents\\GitHub\\Totaltech\\Back\\Entidades.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\facu_\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.15\\microsoft.netcore.app.ref.9.0.15.nupkg.sha512",
+    "C:\\Users\\facu_\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\9.0.15\\microsoft.windowsdesktop.app.ref.9.0.15.nupkg.sha512",
+    "C:\\Users\\facu_\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\9.0.15\\microsoft.aspnetcore.app.ref.9.0.15.nupkg.sha512"
+  ],
   "logs": []
 }
