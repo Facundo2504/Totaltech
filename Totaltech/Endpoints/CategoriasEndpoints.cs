@@ -41,14 +41,13 @@ namespace Totaltech.Endpoints
             // actualizar una categoría existente
             group.MapPut("/{id:int}", async (int id, CategoriaRequest request, ICategoriasLogica logica) =>
             {
-                var categoria = await logica.ObtenerPorIdAsync(id);
-                if (categoria is null)
+                if (await logica.ObtenerPorIdAsync(id) is null)
                 {
                     return Results.NotFound();
                 }
 
-                categoria.Nombre = request.Nombre;
-                categoria.Descripcion = request.Descripcion;
+                var categoria = request.ToEntity();
+                categoria.IdCategoria = id;
                 var error = await logica.ActualizarAsync(categoria);
                 return error is null ? Results.Ok(categoria) : Results.BadRequest(error);
             });

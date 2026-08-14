@@ -155,11 +155,6 @@ namespace Totaltech.Logica
 
         private static string? ValidarUsuario(Usuario usuario, bool necesitaContrasena)
         {
-            if (!Enum.IsDefined(usuario.Rol))
-            {
-                return "El rol del usuario no es valido.";
-            }
-
             if (string.IsNullOrWhiteSpace(usuario.Nombre) || string.IsNullOrWhiteSpace(usuario.Apellido))
             {
                 return "El nombre y el apellido son obligatorios.";
