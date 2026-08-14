@@ -42,16 +42,13 @@ namespace Totaltech.Endpoints
             // actualizar un detalle de pedido existente
             group.MapPut("/{id:int}", async (int id, DetallePedidoRequest request, IDetallePedidosLogica logica) =>
             {
-                var detalle = await logica.ObtenerPorIdAsync(id);
-                if (detalle is null)
+                if (await logica.ObtenerPorIdAsync(id) is null)
                 {
                     return Results.NotFound();
                 }
 
-                detalle.IdPedido = request.IdPedido;
-                detalle.IdProducto = request.IdProducto;
-                detalle.Cantidad = request.Cantidad;
-                detalle.PrecioUnitario = request.PrecioUnitario;
+                var detalle = request.ToEntity();
+                detalle.IdDetallePedido = id;
                 var error = await logica.ActualizarAsync(detalle);
                 return error is null ? Results.Ok(detalle) : Results.BadRequest(error);
             });

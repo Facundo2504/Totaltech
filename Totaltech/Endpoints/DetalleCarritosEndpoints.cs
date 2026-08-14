@@ -48,16 +48,13 @@ namespace Totaltech.Endpoints
             // actualizar un detalle de carrito existente--------------------------------
             group.MapPut("/{id:int}", async (int id, DetalleCarritoRequest request, IDetalleCarritosLogica logica) =>
             {
-                var detalle = await logica.ObtenerPorIdAsync(id);
-                if (detalle is null)
+                if (await logica.ObtenerPorIdAsync(id) is null)
                 {
                     return Results.NotFound();
                 }
 
-                detalle.IdCarrito = request.IdCarrito;
-                detalle.IdProducto = request.IdProducto;
-                detalle.Cantidad = request.Cantidad;
-                detalle.PrecioUnitario = request.PrecioUnitario;
+                var detalle = request.ToEntity();
+                detalle.IdDetalleCarrito = id;
                 var error = await logica.ActualizarAsync(detalle);
                 return error is null ? Results.Ok(detalle) : Results.BadRequest(error);
             });
@@ -67,13 +64,8 @@ namespace Totaltech.Endpoints
             {
                 try
                 {
-                    var resultado = await logica.EliminarAsync(id);
-                    if (resultado.Error is not null)
-                    {
-                        return Results.BadRequest(resultado.Error);
-                    }
-
-                    return resultado.Eliminado ? Results.NoContent() : Results.NotFound();
+                    var eliminado = await logica.EliminarAsync(id);
+                    return eliminado ? Results.NoContent() : Results.NotFound();
                 }
                 catch (DbUpdateException)
                 {

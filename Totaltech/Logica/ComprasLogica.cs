@@ -81,11 +81,6 @@ namespace Totaltech.Logica
 
         private async Task<string?> ValidarCompraAsync(Compra compra)
         {
-            if (!Enum.IsDefined(compra.Estado))
-            {
-                return "El estado de la compra no es valido.";
-            }
-
             if (compra.Total < 0)
             {
                 return "El total de la compra no puede ser negativo.";

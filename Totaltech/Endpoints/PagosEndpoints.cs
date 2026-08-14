@@ -42,22 +42,13 @@ namespace Totaltech.Endpoints
             //actualizar un pago existente-------------------------------------------------------------
             group.MapPut("/{id:int}", async (int id, PagoRequest request, IPagosLogica logica) =>
             {
-                var pago = await logica.ObtenerPorIdAsync(id);
-                if (pago is null)
+                if (await logica.ObtenerPorIdAsync(id) is null)
                 {
                     return Results.NotFound();
                 }
 
-                if (pago.IdPedido != request.IdPedido)
-                {
-                    return Results.BadRequest("No se puede cambiar el pedido asociado a un pago.");
-                }
-
-                pago.IdPedido = request.IdPedido;
-                pago.FechaPago = request.FechaPago;
-                pago.MetodoPago = request.MetodoPago;
-                pago.Monto = request.Monto;
-                pago.Estado = request.Estado;
+                var pago = request.ToEntity();
+                pago.IdPago = id;
                 var error = await logica.ActualizarAsync(pago);
                 return error is null ? Results.Ok(pago) : Results.BadRequest(error);
             });

@@ -42,16 +42,13 @@ namespace Totaltech.Endpoints
             // actualizar un reporte existente--------------------------------
             group.MapPut("/{id:int}", async (int id, ReporteRequest request, IReportesLogica logica) =>
             {
-                var reporte = await logica.ObtenerPorIdAsync(id);
-                if (reporte is null)
+                if (await logica.ObtenerPorIdAsync(id) is null)
                 {
                     return Results.NotFound();
                 }
 
-                reporte.TipoReporte = request.TipoReporte;
-                reporte.FechaInicio = request.FechaInicio;
-                reporte.FechaFin = request.FechaFin;
-                reporte.IdUsuario = request.IdUsuario;
+                var reporte = request.ToEntity();
+                reporte.IdReporte = id;
                 var error = await logica.ActualizarAsync(reporte);
                 return error is null ? Results.Ok(reporte) : Results.BadRequest(error);
             });

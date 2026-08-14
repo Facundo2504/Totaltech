@@ -42,16 +42,13 @@ namespace Totaltech.Endpoints
             // actualizar una compra existente--------------------------------
             group.MapPut("/{id:int}", async (int id, CompraRequest request, IComprasLogica logica) =>
             {
-                var compra = await logica.ObtenerPorIdAsync(id);
-                if (compra is null)
+                if (await logica.ObtenerPorIdAsync(id) is null)
                 {
                     return Results.NotFound();
                 }
 
-                compra.IdProveedor = request.IdProveedor;
-                compra.FechaCompra = request.FechaCompra;
-                compra.Total = request.Total;
-                compra.Estado = request.Estado;
+                var compra = request.ToEntity();
+                compra.IdCompra = id;
                 var error = await logica.ActualizarAsync(compra);
                 return error is null ? Results.Ok(compra) : Results.BadRequest(error);
             });
